@@ -25,10 +25,12 @@ $ sudo git clone https://github.com/Yuri-Bartochevis/OpenWheatherMap
 ```
 
 **Build Api**
+
 obs: Remember, to run this command you need to be inside root project directory "./studyCase"
 
+It's nice to know, I'm using version 4.2 of Gradle.
 ```bash
-$ ./gradlew build docker
+$ gradle build docker
 ```
 
 **Now, Lets run our environment**

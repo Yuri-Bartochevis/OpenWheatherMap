@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.weather.finleap.service.WeatherServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-02-03T13:19:51" hostname="GB-HV653N2" time="0.082">
+  <properties/>
+  <testcase name="getDataSucessFromOpenWeather" classname="com.weather.finleap.service.WeatherServiceTest" time="0.07"/>
+  <testcase name="getDataFailFromOpenWeather" classname="com.weather.finleap.service.WeatherServiceTest" time="0.001"/>
+  <testcase name="verifyIsNotDayShift" classname="com.weather.finleap.service.WeatherServiceTest" time="0.001"/>
+  <testcase name="verifyProcess" classname="com.weather.finleap.service.WeatherServiceTest" time="0.006"/>
+  <testcase name="verifyIsDayShift" classname="com.weather.finleap.service.WeatherServiceTest" time="0.0"/>
+  <testcase name="verifyLocalDateParser" classname="com.weather.finleap.service.WeatherServiceTest" time="0.002"/>
+  <system-out><![CDATA[11:19:51.883 [Test worker] INFO com.weather.finleap.service.WeatherService - starting retrieve weather from city : london 
+11:19:51.895 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.896 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-04 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-05 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.897 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-06 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.898 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-07 
+11:19:51.900 [Test worker] INFO com.weather.finleap.service.WeatherService - Processing weather data input from next 3, sizeImput: 21 
+11:19:51.902 [Test worker] INFO com.weather.finleap.service.WeatherService - starting retrieve weather from city : london 
+11:19:51.908 [Test worker] INFO com.weather.finleap.service.WeatherService - Processing weather data input from next 3, sizeImput: 21 
+11:19:51.912 [Test worker] DEBUG com.weather.finleap.service.WeatherService - getting localDate from Instant : 2019-02-03 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
