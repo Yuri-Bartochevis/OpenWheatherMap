@@ -9,7 +9,6 @@ import com.weather.finleap.util.KelvinToCelsius;
 import com.weather.finleap.util.TestUtils;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -17,7 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.nio.charset.Charset.defaultCharset;
 import static org.junit.Assert.assertFalse;
@@ -73,11 +72,10 @@ public class WeatherServiceTest {
     }
 
     @Test
-    @Ignore
     public void verifyProcess() throws IOException {
-        java.util.List<Object> f = new ArrayList<>();
-        java.util.List type = gson.fromJson(utils.readResource("OpenWeatherList.txt", defaultCharset()), f.getClass());
-        weatherService.process(type);
+        List[] element = gson.fromJson(utils.readResource("OpenWeatherList.txt", defaultCharset()), List[].class);
+        java.util.List<List> array = Arrays.asList(element);
+        weatherService.process(array);
     }
 
 

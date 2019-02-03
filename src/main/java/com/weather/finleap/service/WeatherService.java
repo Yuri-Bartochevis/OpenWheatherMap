@@ -1,11 +1,11 @@
 package com.weather.finleap.service;
 
-import com.google.gson.Gson;
 import com.weather.finleap.client.RestClient;
 import com.weather.finleap.model.ResponseWeather;
 import com.weather.finleap.model.openweather.ResponseApi;
 import com.weather.finleap.util.KelvinToCelsius;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,10 @@ import java.util.stream.Collectors;
 public class WeatherService {
 
     public static final int DAYS_TO_ADD_CASE_RULE = 3;
-    public static final LocalTime START_DAY_SHIFT = LocalTime.of(5,59,59);
-    public static final LocalTime END_DAY_SHIFT = LocalTime.of(18,0,1);
+    public static final LocalTime START_DAY_SHIFT = LocalTime.of(5, 59, 59);
+    public static final LocalTime END_DAY_SHIFT = LocalTime.of(18, 0, 1);
+
+    private static final Logger logger = LoggerFactory.getLogger(WeatherService.class);
 
     @Value("${open.weather.api.uri}")
     private String fiveDaysForecast;
@@ -28,17 +30,19 @@ public class WeatherService {
     RestClient restClient;
     KelvinToCelsius converter;
 
-    @Autowired
     public WeatherService(RestClient restClient, KelvinToCelsius converter) {
         this.converter = converter;
         this.restClient = restClient;
     }
 
 
-    @Cacheable(value = "WEATHER_CACHE",key="#city", unless="#result == null")
+    @Cacheable(value = "WEATHER_CACHE", key = "#city", unless = "#result == null")
     public ResponseWeather getWeather(String city) {
+        logger.info("starting retrieve weather from city : {} ", city);
         ResponseApi responseApi = restClient.get(fiveDaysForecast, city);
+
         LocalDate newdate = LocalDate.now().plusDays(DAYS_TO_ADD_CASE_RULE);
+
 
         Map<LocalDate, List<com.weather.finleap.model.openweather.List>> groupedByDays = responseApi
                 .getList()
@@ -59,16 +63,17 @@ public class WeatherService {
     }
 
     protected ResponseWeather process(List<com.weather.finleap.model.openweather.List> listToBeProcessed) {
-        double pressureAverage = 0,dayAverage = 0,nightAverage = 0;
+        logger.info("Processing weather data input from next {}, sizeImput: {} ", DAYS_TO_ADD_CASE_RULE, listToBeProcessed.size());
+        double pressureAverage = 0, dayAverage = 0, nightAverage = 0;
         int dayCount = 0, nightCount = 0;
 
         for (com.weather.finleap.model.openweather.List weather : listToBeProcessed) {
             if (isDay(weather.getDt())) {
                 dayAverage += weather.getMain().getTemp();
-                dayCount ++;
-            }else {
+                dayCount++;
+            } else {
                 nightAverage += weather.getMain().getTemp();
-                nightCount ++;
+                nightCount++;
             }
             pressureAverage += weather.getMain().getPressure();
         }
@@ -87,7 +92,9 @@ public class WeatherService {
 
 
     protected LocalDate getLocalDateFromTimestamp(com.weather.finleap.model.openweather.List element) {
-        return LocalDateTime.ofInstant(Instant.ofEpochSecond(element.getDt()), ZoneId.of("GMT")).toLocalDate();
+        LocalDate currentDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(element.getDt()), ZoneId.of("GMT")).toLocalDate();
+        logger.debug("getting localDate from Instant : {} ", currentDate);
+        return currentDate;
     }
 
 

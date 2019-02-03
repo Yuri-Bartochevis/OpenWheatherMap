@@ -13,9 +13,10 @@ public class RestResponseEntityExceptionHandler
         extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value
-            = { Exception.class })
+            = {Exception.class})
     protected ResponseEntity<Object> handleGenericError(
             RuntimeException ex, WebRequest request) {
+        logger.error("Something happened while trying to retrieve data from open weather Api", ex);
         String bodyOfResponse = "Error retrieving data from open weather api";
         return handleExceptionInternal(ex, bodyOfResponse,
                 new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);

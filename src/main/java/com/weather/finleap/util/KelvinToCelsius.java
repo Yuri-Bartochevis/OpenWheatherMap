@@ -2,7 +2,6 @@ package com.weather.finleap.util;
 
 import org.springframework.stereotype.Component;
 
-import java.text.DecimalFormat;
 import java.util.function.Function;
 
 @Component
